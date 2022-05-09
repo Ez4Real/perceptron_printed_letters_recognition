@@ -3,12 +3,9 @@ import random
 import glob
 from math import pow
 
-from numpy import ediff1d, object0
-
 neurons = []
-n = 0.5
+n = 1
 presets = []
-d = []
 epoch = 0
 
 class Neuron():
@@ -39,11 +36,7 @@ class Neuron():
         self.e = di - self.res
         
 
-                
-
-
 for index, image in enumerate(glob.iglob('letters/*.png')):
-    
     
     img = cv2.imread(image)
     
@@ -64,14 +57,13 @@ for index, image in enumerate(glob.iglob('letters/*.png')):
     
     neurons.append(neuron)
     
-
 flag = False
 
 while not flag:
 
     isCorrect = True
     print(f'\nEpoch {epoch}')
-    for indexP, preset in enumerate(presets):
+    for preset in presets:
         for indexN, neuron in enumerate(neurons):
     
             neuron.epsilon_calculation(preset['desired'][indexN], preset['inputs'])

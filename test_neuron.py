@@ -21,7 +21,7 @@ for index, image in enumerate(glob.iglob('test/*.png')):
     
     test_presets.append({'letter': image[-5], 'inputs': inputs, 'desired': desired})
     
-for indexP, preset in enumerate(test_presets):
+for preset in test_presets:
         for indexN, neuron in enumerate(neurons):
             
             neuron.result(preset['inputs'])
